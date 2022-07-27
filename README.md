@@ -1,6 +1,6 @@
 # SimpleWordPad
 
-## Group
+## Info
 
 1. Nguyễn Trần Hoàng Long
 
