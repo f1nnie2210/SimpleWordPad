@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -301,6 +302,70 @@ namespace SimpleWordPad
             printDialog.ShowDialog();
          }
 
-  
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.png; *.bmp)|*.jpg; *.jpeg; *.gif; *.png; *.bmp";
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                createImage(open.FileName);
+            }
+        }
+        private void createImage(string name)
+        {
+            Clipboard.SetImage(Image.FromFile(name));
+            RichTextBox.Paste();
+        }
+
+        private void toolStripButton16_Click(object sender, EventArgs e)
+        {
+                RichTextBox.Select();
+                RichTextBox.SelectionAlignment = HorizontalAlignment.Center;
+        }
+
+        private void toolStripButton17_Click(object sender, EventArgs e)
+        {
+            RichTextBox.Select();
+            RichTextBox.SelectionAlignment = HorizontalAlignment.Left;
+        }
+
+        private void toolStripButton18_Click(object sender, EventArgs e)
+        {
+            RichTextBox.Select();
+            RichTextBox.SelectionAlignment = HorizontalAlignment.Right;
+        }
+
+        private int Start = -1;
+        private void toolStripButton19_Click(object sender, EventArgs e)
+        {
+            int Index = RichTextBox.Text.IndexOf(toolStripButton20.Text, Start + 1, StringComparison.OrdinalIgnoreCase);
+
+            if (RichTextBox.Text.ToUpper().Contains(toolStripButton20.Text.ToUpper()))
+            {
+                if (Index != -1)
+                {
+                    RichTextBox.Focus();
+                    RichTextBox.SelectionStart = Index;
+                    RichTextBox.SelectionLength = toolStripButton20.Text.Length;
+                    RichTextBox.ScrollToCaret();
+                    Start = Index;
+                }
+                else
+                {
+                    Start = -1;
+                    Index = RichTextBox.Text.IndexOf(toolStripButton20.Text, Start + 1, StringComparison.OrdinalIgnoreCase);
+                    RichTextBox.Focus();
+                    RichTextBox.SelectionStart = Index;
+                    RichTextBox.SelectionLength = toolStripButton20.Text.Length;
+                    RichTextBox.ScrollToCaret();
+                    Start = Index;
+                }
+            }
+            else
+            {
+                MessageBox.Show("The following text [" + toolStripButton20.Text + "] was not found.");
+            }
+        }
     }
 }

@@ -87,6 +87,10 @@
     <None Include="Resources\Wordpad-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\103724_text_align_center_icon.ico" />
+    <None Include="Resources\103726_text_align_left_icon.ico" />
+    <None Include="Resources\103727_text_align_right_icon.ico" />
+    <None Include="Resources\2931184_normal_regular_zoom_glass_magnifier_icon.ico" />
     <Content Include="Wordpad2022.ico" />
     <None Include="Resources\Mart-Glaze-Info.ico" />
     <None Include="Resources\Visualpharm-Must-Have-Undo.ico" />
